@@ -1,0 +1,14 @@
+# Codex
+.codex/
+
+# Environment variables (may contain secrets)
+.envrc
+
+# Large model artifacts (do not commit)
+artifacts/models/**/*.nemo
+artifacts/models/**/pytorch_model*.bin
+artifacts/models/**/model*.safetensors
+
+# Python cache
+__pycache__/
+*.pyc

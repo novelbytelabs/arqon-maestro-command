@@ -1,0 +1,44 @@
+{
+  "manifest_version": "1.0",
+  "model_alias": "arqon-maestro-command",
+  "base_model": {
+    "id": "nvidia/parakeet-tdt_ctc-1.1b",
+    "version": "hf-main"
+  },
+  "provenance": {
+    "adapter_type": "none",
+    "dataset_lineage": "TODO(dataset-lineage)",
+    "license": "cc-by-4.0 (verify on model card)",
+    "eval_results": "TODO(eval-results)"
+  },
+  "runtime_constraints": {
+    "python": "3.10.19",
+    "torch": "2.10.0",
+    "numpy": "2.2.5",
+    "protobuf": "4.25.8",
+    "protoc": "29.3"
+  },
+  "required_patterns": [
+    "*.nemo",
+    "*.yaml",
+    "*.json",
+    "*.md",
+    "*token*",
+    "*vocab*",
+    "*spm*"
+  ],
+  "artifacts": [
+    {
+      "remote": "README.md",
+      "local": "artifacts/models/parakeet-tdt_ctc-1.1b/README.md",
+      "size_bytes": 11297,
+      "sha256": "c43ec2501beed6fcd2603dde8b9ba872b3dfec1ccd93e1467d213707d8369814"
+    },
+    {
+      "remote": "parakeet-tdt_ctc-1.1b.nemo",
+      "local": "artifacts/models/parakeet-tdt_ctc-1.1b/parakeet-tdt_ctc-1.1b.nemo",
+      "size_bytes": 4287344640,
+      "sha256": "4e7ccfddaf06f3461b5ac09da61a010c3e4fa464ee67be6b10f0a59c946c51e0"
+    }
+  ]
+}

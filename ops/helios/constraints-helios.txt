@@ -1,0 +1,9 @@
+# Core immutable pins for helios-gpu-118
+numpy==2.2.5
+protobuf==4.25.8
+torch==2.10.0
+torchaudio==2.10.0
+torchvision==0.25.0
+
+# NeMo locked to protobuf-4-compatible line
+nemo_toolkit==2.1.0

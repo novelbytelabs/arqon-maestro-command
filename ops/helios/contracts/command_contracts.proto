@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package arqon.maestro.command.v1;
+
+message SpeechResult {
+  string transcript = 1;
+  repeated string partials = 2;
+  string lane = 3;
+  float acoustic_confidence = 4;
+  float token_uncertainty = 5;
+  map<string, string> speaker_metadata = 6;
+  map<string, string> endpointing_metadata = 7;
+  string provider_id = 8;
+  uint32 elapsed_ms = 9;
+  bool degraded_state = 10;
+}
+
+message Intent {
+  string name = 1;
+}
+
+message PolicyDecision {
+  string reason = 1;
+}
+
+message EvidencePacket {
+  string audio_hash = 1;
+  string lane = 2;
+  map<string, string> adapter_metadata = 3;
+  string confidence_adjudication = 4;
+  string policy_outcome = 5;
+  uint32 latency_ms = 6;
+  string timestamp = 7;
+}
+
+message CommandResult {
+  string command = 1;
+  Intent intent = 2;
+  map<string, string> parameters = 3;
+  PolicyDecision policy_decision = 4;
+  string execution_authority = 5;
+  EvidencePacket evidence_packet = 6;
+}

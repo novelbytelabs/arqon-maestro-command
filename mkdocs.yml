@@ -1,0 +1,47 @@
+site_name: Arqon Maestro Docs
+site_description: Voice-first control layer documentation for the Arqon ecosystem
+site_url: https://novelbytelabs.github.io/arqon-maestro-command/
+repo_url: https://github.com/novelbytelabs/arqon-maestro-command/
+repo_name: novelbytelabs/arqon-maestro-command
+edit_uri: edit/main/docs/
+docs_dir: docs
+site_dir: site
+dev_addr: 127.0.0.1:8193
+
+theme:
+  name: "material"
+  custom_dir: overrides
+  logo: assets/favicon.ico
+  favicon: assets/favicon.ico
+  features:
+    #    - navigation.tabs
+    - navigation.sections
+#    - navigation.expand
+    - navigation.tracking
+    - toc.follow
+    - content.tabs.link
+    - content.code.annotate
+    - navigation.top
+    - content.code.copy
+    - search.highlight
+    - search.suggest
+    - navigation.instant
+  palette:
+    - scheme: slate
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to Light mode
+    - scheme: default
+      primary: deep purple
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: Switch to Dark mode
+  icon:
+    repo: fontawesome/brands/github
+
+
+nav:
+  - Overview: index.md
