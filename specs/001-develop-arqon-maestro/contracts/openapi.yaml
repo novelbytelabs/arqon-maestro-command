@@ -1,0 +1,166 @@
+openapi: 3.1.0
+info:
+  title: Arqon Maestro Command Lane API
+  version: 0.1.0
+  description: >-
+    Planning contract for command-lane interactions and readiness artifacts.
+servers:
+  - url: https://maestro.local
+paths:
+  /v1/utterances:
+    post:
+      summary: Submit utterance for lane processing
+      operationId: submitUtterance
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UtteranceEnvelope'
+      responses:
+        '200':
+          description: Speech result returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SpeechResult'
+  /v1/commands/evaluate:
+    post:
+      summary: Evaluate command-lane decision from speech result
+      operationId: evaluateCommand
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SpeechResult'
+      responses:
+        '200':
+          description: Command decision
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandResult'
+  /v1/commands/{commandId}/confirm:
+    post:
+      summary: Confirm high-impact command
+      operationId: confirmCommand
+      parameters:
+        - in: path
+          name: commandId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Confirmation accepted
+        '408':
+          description: Confirmation timeout (auto-refused)
+  /v1/evidence/{evidenceId}:
+    get:
+      summary: Retrieve evidence packet
+      operationId: getEvidencePacket
+      parameters:
+        - in: path
+          name: evidenceId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Evidence packet
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvidencePacket'
+  /v1/readiness/dependency-audit:
+    get:
+      summary: Read dependency completeness audit
+      operationId: getDependencyAudit
+      responses:
+        '200':
+          description: Dependency audit report
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  report_path:
+                    type: string
+                    example: artifacts/reports/dependency-audit.md
+                  blocked:
+                    type: boolean
+                  deferred_count:
+                    type: integer
+components:
+  schemas:
+    UtteranceEnvelope:
+      type: object
+      required: [utterance_id, lane, provider_id]
+      properties:
+        utterance_id:
+          type: string
+        lane:
+          type: string
+          enum: [command_lane, dictation_lane, conversation_lane, translation_lane, search_explore_lane, degraded_command_lane]
+        provider_id:
+          type: string
+        audio_hash:
+          type: string
+        elapsed_ms:
+          type: integer
+    SpeechResult:
+      type: object
+      required: [transcript, lane, provider_id, elapsed_ms, degraded_state]
+      properties:
+        transcript:
+          type: string
+        lane:
+          type: string
+        acoustic_confidence:
+          type: number
+          format: float
+        provider_id:
+          type: string
+        elapsed_ms:
+          type: integer
+        degraded_state:
+          type: boolean
+    CommandResult:
+      type: object
+      required: [command, execution_authority, evidence_packet]
+      properties:
+        command:
+          type: string
+        intent:
+          type: object
+          properties:
+            name:
+              type: string
+        policy_decision:
+          type: object
+          properties:
+            reason:
+              type: string
+        execution_authority:
+          type: string
+          enum: [granted, refused, escalated]
+        evidence_packet:
+          $ref: '#/components/schemas/EvidencePacket'
+    EvidencePacket:
+      type: object
+      required: [audio_hash, lane, policy_outcome, latency_ms, timestamp]
+      properties:
+        audio_hash:
+          type: string
+        lane:
+          type: string
+        confidence_adjudication:
+          type: string
+        policy_outcome:
+          type: string
+        latency_ms:
+          type: integer
+        timestamp:
+          type: string
+          format: date-time

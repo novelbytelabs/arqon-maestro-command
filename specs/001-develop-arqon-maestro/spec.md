@@ -5,6 +5,16 @@
 **Status**: Draft  
 **Input**: User description: "Develop the Arqon Maestro Command Lane, a control-first speech system for deterministic, operator-safe execution of voice commands within the Arqon Maestro Voice Operating System. The system must prioritize deterministic accept/reject behavior, grammar authority, a bounded command language, and fail-closed safety. It needs to distinguish from a Dictation Lane, optimize for low-latency command acceptance, and integrate with a Rust hot-path orchestrator for audio processing, policy adjudication, and interrupt authority. Define the canonical interaction lanes and ensure compliance with command and evidence packet contracts."
 
+## Clarifications
+
+### Session 2026-03-30
+
+- Q: What monthly command-lane availability target should define reliability gates? → A: 99.9% monthly.
+- Q: What fail-closed adapter timeout budget should be enforced? → A: 150ms.
+- Q: What false-positive ceiling should apply to high-impact commands? → A: <=0.1%.
+- Q: What timeout should apply to high-impact confirmation prompts? → A: 5 seconds.
+- Q: How should deferred dependency items affect implementation start? → A: Hard block implementation start.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Execute Commands Deterministically (Priority: P1)
@@ -159,7 +169,10 @@ implementation readiness gate via `make helios-smoke`.
 - **FR-010**: System MUST support pluggable ASR adapters through a constrained
   contract boundary where adapter changes do not alter defined command semantics.
 - **FR-011**: System MUST meet the command-lane low-latency target for acceptance or
-  refusal decisions under normal operating conditions.
+  refusal decisions under benchmark profile BP-001: frozen `helios-gpu-118`
+  runtime, warmed model state, one concurrent lane session, validated command
+  corpus of at least 1,000 utterances, and median utterance duration of 1-4
+  seconds.
 - **FR-012**: System MUST reject infrastructure-level JSON payloads on internal
   machine paths and use protobuf as the authoritative infrastructure wire format.
 - **FR-013**: Before implementation starts, repository MUST produce
@@ -178,6 +191,29 @@ implementation readiness gate via `make helios-smoke`.
   in-environment installs.
 - **FR-020**: Dependency resolution/provisioning MUST occur only in approved
   provisioning environments with auditable records.
+- **FR-021**: Command-lane service availability MUST meet or exceed 99.9% monthly.
+- **FR-022**: Adapter timeout handling MUST fail closed at 150ms or less for
+  command-lane decisions.
+- **FR-023**: High-impact command false-positive rate MUST be less than or equal
+  to 0.1% on the validated adversarial and regression evaluation suites as a
+  command safety policy threshold.
+- **FR-024**: High-impact confirmation prompts MUST auto-refuse if explicit
+  confirmation is not received within 5 seconds.
+- **FR-025**: Implementation MUST NOT start while any dependency remains marked
+  `deferred` in `artifacts/reports/dependency-audit.md`.
+- **FR-026**: CI and pre-merge validation MUST run runtime hygiene enforcement to
+  block direct package installs in frozen `helios-gpu-118`.
+- **FR-027**: Internal machine-path interfaces MUST accept protobuf payloads only
+  and MUST explicitly reject JSON payloads with typed refusal reasons.
+- **FR-028**: Release operations MUST include documented canary and rollback
+  procedures, and each release candidate MUST record rollback drill evidence.
+- **FR-029**: CI MUST compute and enforce the high-impact false-positive threshold
+  of less than or equal to 0.1% from approved regression/adversarial evaluation
+  outputs. This CI gate is the enforcement mechanism for FR-023.
+- **FR-030**: Operations MUST produce a monthly command-lane availability report
+  and MUST trigger SLO breach handling when availability falls below 99.9%,
+  including SEV-2 incident workflow initiation within 15 minutes, on-call owner
+  notification, and corrective-action record creation in `artifacts/reports`.
 
 ### Key Entities *(include if feature involves data)*
 
@@ -215,6 +251,28 @@ implementation readiness gate via `make helios-smoke`.
   `artifacts/reports/dependency-audit.md` before implementation starts.
 - **SC-008**: A new AI/dev instance can reproduce the local readiness runbook
   (including `make helios-smoke`) without additional in-env installs.
+- **SC-009**: Command-lane monthly availability is at least 99.9% over the
+  measured reporting window.
+- **SC-010**: 100% of adapter timeout cases at or beyond 150ms result in explicit
+  fail-closed outcomes (`refused` or `escalated`) with evidence emitted.
+- **SC-011**: High-impact command false-positive rate is less than or equal to
+  0.1% on the approved validation corpus.
+- **SC-012**: 100% of unconfirmed high-impact prompts are auto-refused after
+  5 seconds and emit evidence with timeout rationale.
+- **SC-013**: 0 dependencies are marked `deferred` at implementation start.
+- **SC-014**: 100% of CI and pre-merge runs execute runtime hygiene checks with
+  zero direct-install violations in frozen runtime contexts.
+- **SC-015**: 100% of internal machine-path JSON payload attempts are rejected
+  with explicit typed refusal responses, while protobuf payloads continue to pass.
+- **SC-016**: Every release candidate includes a canary decision record and a
+  successful rollback drill artifact before promotion approval; successful means
+  recovery to the last known-good manifest within 10 minutes with post-rollback
+  `make helios-smoke` and contract validation passing.
+- **SC-017**: CI fails any run where high-impact false-positive rate exceeds 0.1%
+  on approved evaluation outputs.
+- **SC-018**: Monthly availability report is generated for each reporting window
+  and records command-lane availability at or above 99.9%; any breach initiates
+  SEV-2 workflow within 15 minutes and records owner acknowledgment.
 
 ## Assumptions
 
