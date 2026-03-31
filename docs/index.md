@@ -46,9 +46,10 @@ auditable change records.
 
 ## Documentation Map
 
-- `docs/command-lane-architecture-memo.md`
-- `docs/lane-separation-strategy.md`
-- `docs/stt-strategy-by-lane.md`
-- `docs/rust-hot-path-orchestration.md`
-- `docs/maestro-actuation-and-control-stack.md`
-- `docs/nexus-maestro-arqonmcp-boundary.md`
+- `docs/architecture/command-lane.md`
+- `docs/architecture/maestro-bridge.md`
+- `docs/operations/model-start-and-usage.md`
+- `docs/model-card-command-lane.md`
+- `docs/operations/dependency-audit.md`
+- `docs/operations/canary-rollout.md`
+- `docs/operations/merge-gates.md`

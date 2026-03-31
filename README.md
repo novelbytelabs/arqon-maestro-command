@@ -22,8 +22,9 @@ The Command Lane is the primary control system of Arqon Maestro, a Voice Operati
 10. [Getting Started](#getting-started)
 11. [Development Guide](#development-guide)
 12. [Testing](#testing)
-13. [AI Bootstrap (New Instance Checklist)](#ai-bootstrap-new-instance-checklist)
-14. [Roadmap](#roadmap)
+13. [Bridge and Model Docs](#bridge-and-model-docs)
+14. [AI Bootstrap (New Instance Checklist)](#ai-bootstrap-new-instance-checklist)
+15. [Roadmap](#roadmap)
 
 ---
 
@@ -392,6 +393,11 @@ cargo test
 cargo run --example basic_command
 ```
 
+For the current command-lane runtime/startup flow, see:
+- `docs/operations/model-start-and-usage.md`
+- `docs/architecture/maestro-bridge.md`
+- `docs/model-card-command-lane.md`
+
 ### Project Structure
 
 ```
@@ -483,6 +489,15 @@ cargo bench
 3. **Phonetic Hazard Corpus:** Known risky command pairs
 4. **Dictation Corpus:** Prose, code comments, notes
 5. **Degraded Corpus:** Reduced vocabulary survival
+
+---
+
+## Bridge and Model Docs
+
+- Bridge to Maestro orchestration: `docs/architecture/maestro-bridge.md`
+- Start/use model runbook: `docs/operations/model-start-and-usage.md`
+- Model card: `docs/model-card-command-lane.md`
+- Docs index: `docs/index.md`
 
 ---
 
@@ -579,12 +594,13 @@ Expected artifact:
 
 ## References
 
-- [Command Lane Architecture Memo](./docs/command-lane-architecture-memo.md)
-- [Lane Separation Strategy](./docs/lane-separation-strategy.md)
-- [STT Strategy By Lane](./docs/stt-strategy-by-lane.md)
-- [Rust Hot-Path Orchestration](./docs/rust-hot-path-orchestration.md)
-- [Maestro Actuation Stack](./docs/maestro-actuation-and-control-stack.md)
-- [Nexus/Maestro/ArqonMCP Boundary](./docs/nexus-maestro-arqonmcp-boundary.md)
+- [Command Lane Architecture](./docs/architecture/command-lane.md)
+- [Maestro Bridge](./docs/architecture/maestro-bridge.md)
+- [Model Start and Usage](./docs/operations/model-start-and-usage.md)
+- [Model Card](./docs/model-card-command-lane.md)
+- [Dependency Audit Guide](./docs/operations/dependency-audit.md)
+- [Canary Rollout Runbook](./docs/operations/canary-rollout.md)
+- [Merge Gates Guide](./docs/operations/merge-gates.md)
 
 ---
 
