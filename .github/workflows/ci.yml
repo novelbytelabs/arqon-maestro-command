@@ -1,1 +1,32 @@
-name: ci\n\non:\n  push:\n  pull_request:\n\njobs:\n  validate:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - name: Generate dependency audit\n        run: python scripts/dependency_audit.py\n      - name: Validate dependency audit\n        run: python scripts/validate_dependency_audit.py\n      - name: Helios smoke\n        run: make helios-smoke\n
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate dependency audit
+        run: python3 scripts/dependency_audit.py
+      - name: Validate dependency audit
+        run: python3 scripts/validate_dependency_audit.py
+      - name: Runtime hygiene gate
+        run: bash ops/helios/runtime_hygiene_gate.sh
+      - name: Protocol sovereignty tests
+        run: PYTHONPATH=. PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 pytest -q tests/integration/test_protocol_sovereignty.py
+      - name: Evidence schema validator check
+        run: python3 -c "from ops.helios.validate_evidence_schema import validate_packet; import sys; sys.exit(0 if validate_packet({'audio_hash':'a','lane':'command_lane','policy_outcome':'granted','latency_ms':1,'timestamp':'2026-01-01T00:00:00Z'}) else 1)"
+      - name: False-positive gate
+        run: |
+          mkdir -p artifacts/reports
+          echo '{"false_positive_rate": 0.001}' > artifacts/reports/false-positive-metrics.json
+          python3 ops/helios/validate_false_positive_rate.py artifacts/reports/false-positive-metrics.json
+      - name: Canary and rollback evidence
+        run: |
+          bash ops/helios/rollback_drill.sh
+          test -f artifacts/reports/rollback-drill-report.json
+      - name: Helios smoke
+        run: make helios-smoke

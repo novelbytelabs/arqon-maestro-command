@@ -75,17 +75,17 @@
 
 ### Tests for User Story 2
 
-- [ ] T029 [P] [US2] Add lane-routing exclusivity unit tests in `tests/unit/test_lane_router.py`
-- [ ] T030 [P] [US2] Add dictation isolation integration tests in `tests/integration/test_dictation_isolation.py`
-- [ ] T031 [P] [US2] Add lane-switch provenance e2e tests in `tests/e2e/test_lane_switch_provenance.py`
-- [ ] T032 [P] [US2] Add homophone collision regression tests in `tests/regression/test_homophone_lane_collision.py`
+- [X] T029 [P] [US2] Add lane-routing exclusivity unit tests in `tests/unit/test_lane_router.py`
+- [X] T030 [P] [US2] Add dictation isolation integration tests in `tests/integration/test_dictation_isolation.py`
+- [X] T031 [P] [US2] Add lane-switch provenance e2e tests in `tests/e2e/test_lane_switch_provenance.py`
+- [X] T032 [P] [US2] Add homophone collision regression tests in `tests/regression/test_homophone_lane_collision.py`
 
 ### Implementation for User Story 2
 
-- [ ] T033 [P] [US2] Implement canonical lane router in `src/command_lane/router.py`
-- [ ] T034 [US2] Implement dictation command-path guard in `src/command_lane/dictation_guard.py`
-- [ ] T035 [US2] Implement `/v1/utterances` intake handler in `src/command_lane/api/utterances.py`
-- [ ] T036 [US2] Persist lane provenance metadata in `src/command_lane/provenance.py`
+- [X] T033 [P] [US2] Implement canonical lane router in `src/command_lane/router.py`
+- [X] T034 [US2] Implement dictation command-path guard in `src/command_lane/dictation_guard.py`
+- [X] T035 [US2] Implement `/v1/utterances` intake handler in `src/command_lane/api/utterances.py`
+- [X] T036 [US2] Persist lane provenance metadata in `src/command_lane/provenance.py`
 
 **Checkpoint**: US2 is independently functional and testable.
 
@@ -99,19 +99,19 @@
 
 ### Tests for User Story 3
 
-- [ ] T037 [P] [US3] Add adapter timeout unit tests in `tests/unit/test_adapter_timeout.py`
-- [ ] T038 [P] [US3] Add interrupt-priority integration tests in `tests/integration/test_interrupt_priority.py`
-- [ ] T039 [P] [US3] Add high-impact confirmation timeout e2e tests in `tests/e2e/test_confirmation_timeout.py`
-- [ ] T040 [P] [US3] Add BP-001 latency regression benchmark tests in `tests/regression/test_latency_budget_bp001.py`
-- [ ] T041 [P] [US3] Add rapid lane-toggle adversarial tests in `tests/adversarial/test_rapid_lane_toggling.py`
+- [X] T037 [P] [US3] Add adapter timeout unit tests in `tests/unit/test_adapter_timeout.py`
+- [X] T038 [P] [US3] Add interrupt-priority integration tests in `tests/integration/test_interrupt_priority.py`
+- [X] T039 [P] [US3] Add high-impact confirmation timeout e2e tests in `tests/e2e/test_confirmation_timeout.py`
+- [X] T040 [P] [US3] Add BP-001 latency regression benchmark tests in `tests/regression/test_latency_budget_bp001.py`
+- [X] T041 [P] [US3] Add rapid lane-toggle adversarial tests in `tests/adversarial/test_rapid_lane_toggling.py`
 
 ### Implementation for User Story 3
 
-- [ ] T042 [P] [US3] Implement adapter timeout fail-closed enforcement in `src/command_lane/adapter_timeout.py`
-- [ ] T043 [P] [US3] Implement confirmation challenge lifecycle in `src/command_lane/confirmation.py`
-- [ ] T044 [US3] Implement interrupt command prioritization in `src/command_lane/interrupts.py`
-- [ ] T045 [US3] Implement BP-001 latency metrics aggregation in `src/command_lane/metrics.py`
-- [ ] T046 [US3] Configure 150ms timeout and 5s confirmation policy in `configs/lane_policy.yaml`
+- [X] T042 [P] [US3] Implement adapter timeout fail-closed enforcement in `src/command_lane/adapter_timeout.py`
+- [X] T043 [P] [US3] Implement confirmation challenge lifecycle in `src/command_lane/confirmation.py`
+- [X] T044 [US3] Implement interrupt command prioritization in `src/command_lane/interrupts.py`
+- [X] T045 [US3] Implement BP-001 latency metrics aggregation in `src/command_lane/metrics.py`
+- [X] T046 [US3] Configure 150ms timeout and 5s confirmation policy in `configs/lane_policy.yaml`
 
 **Checkpoint**: US3 is independently functional and testable.
 
@@ -125,19 +125,19 @@
 
 ### Tests for User Story 4
 
-- [ ] T047 [P] [US4] Add evidence packet completeness unit tests in `tests/unit/test_evidence_packet_fields.py`
-- [ ] T048 [P] [US4] Add adapter contract compatibility integration tests in `tests/integration/test_adapter_contract_compatibility.py`
-- [ ] T049 [P] [US4] Add evidence endpoint contract tests in `tests/integration/test_evidence_endpoint_contract.py`
-- [ ] T050 [P] [US4] Add schema drift regression tests in `tests/regression/test_contract_schema_regression.py`
+- [X] T047 [P] [US4] Add evidence packet completeness unit tests in `tests/unit/test_evidence_packet_fields.py`
+- [X] T048 [P] [US4] Add adapter contract compatibility integration tests in `tests/integration/test_adapter_contract_compatibility.py`
+- [X] T049 [P] [US4] Add evidence endpoint contract tests in `tests/integration/test_evidence_endpoint_contract.py`
+- [X] T050 [P] [US4] Add schema drift regression tests in `tests/regression/test_contract_schema_regression.py`
 
 ### Implementation for User Story 4
 
-- [ ] T051 [P] [US4] Implement SpeechResult builder in `src/command_lane/speech_result_builder.py`
-- [ ] T052 [P] [US4] Implement CommandResult builder in `src/command_lane/command_result_builder.py`
-- [ ] T053 [P] [US4] Implement EvidencePacket builder and serializer in `src/command_lane/evidence.py`
-- [ ] T054 [US4] Implement `/v1/evidence/{evidenceId}` handler in `src/command_lane/api/evidence.py`
-- [ ] T055 [US4] Implement evidence schema gate script in `ops/helios/validate_evidence_schema.py`
-- [ ] T056 [US4] Implement `/v1/readiness/dependency-audit` handler in `src/command_lane/api/readiness.py`
+- [X] T051 [P] [US4] Implement SpeechResult builder in `src/command_lane/speech_result_builder.py`
+- [X] T052 [P] [US4] Implement CommandResult builder in `src/command_lane/command_result_builder.py`
+- [X] T053 [P] [US4] Implement EvidencePacket builder and serializer in `src/command_lane/evidence.py`
+- [X] T054 [US4] Implement `/v1/evidence/{evidenceId}` handler in `src/command_lane/api/evidence.py`
+- [X] T055 [US4] Implement evidence schema gate script in `ops/helios/validate_evidence_schema.py`
+- [X] T056 [US4] Implement `/v1/readiness/dependency-audit` handler in `src/command_lane/api/readiness.py`
 
 **Checkpoint**: US4 is independently functional and testable.
 
@@ -147,20 +147,20 @@
 
 **Purpose**: Complete cross-story operational readiness and merge/release gates.
 
-- [ ] T057 [P] Implement internal machine-path protocol guard (protobuf accept / JSON reject) in `src/command_lane/protocol_guard.py`
-- [ ] T058 [P] Add protocol sovereignty integration tests in `tests/integration/test_protocol_sovereignty.py`
-- [ ] T059 [P] Enforce runtime hygiene gate in CI via `ops/helios/runtime_hygiene_gate.sh` in `.github/workflows/ci.yml`
-- [ ] T060 [P] Implement false-positive threshold gate parser and validator in `ops/helios/validate_false_positive_rate.py`
-- [ ] T061 [P] Implement monthly availability report generator in `scripts/availability_report.py`
-- [ ] T062 [P] Implement availability breach handler (SEV-2 <=15 min, owner ack) in `scripts/availability_breach_handler.py`
-- [ ] T063 [P] Add canary rollout runbook in `docs/operations/canary-rollout.md`
-- [ ] T064 [P] Implement rollback drill runner in `ops/helios/rollback_drill.sh`
-- [ ] T065 [P] Wire canary/rollback evidence checks into CI in `.github/workflows/ci.yml`
-- [ ] T066 Execute rollback drill for RC flow and store artifact in `artifacts/reports/rollback-drill-report.json`
-- [ ] T067 [P] Add architecture and lane isolation documentation in `docs/architecture/command-lane.md`
-- [ ] T068 [P] Add dependency audit operations guide in `docs/operations/dependency-audit.md`
-- [ ] T069 Add merge-gate operations guide in `docs/operations/merge-gates.md`
-- [ ] T070 Run full readiness validation and record RC report in `artifacts/reports/release-candidate-validation.md`
+- [X] T057 [P] Implement internal machine-path protocol guard (protobuf accept / JSON reject) in `src/command_lane/protocol_guard.py`
+- [X] T058 [P] Add protocol sovereignty integration tests in `tests/integration/test_protocol_sovereignty.py`
+- [X] T059 [P] Enforce runtime hygiene gate in CI via `ops/helios/runtime_hygiene_gate.sh` in `.github/workflows/ci.yml`
+- [X] T060 [P] Implement false-positive threshold gate parser and validator in `ops/helios/validate_false_positive_rate.py`
+- [X] T061 [P] Implement monthly availability report generator in `scripts/availability_report.py`
+- [X] T062 [P] Implement availability breach handler (SEV-2 <=15 min, owner ack) in `scripts/availability_breach_handler.py`
+- [X] T063 [P] Add canary rollout runbook in `docs/operations/canary-rollout.md`
+- [X] T064 [P] Implement rollback drill runner in `ops/helios/rollback_drill.sh`
+- [X] T065 [P] Wire canary/rollback evidence checks into CI in `.github/workflows/ci.yml`
+- [X] T066 Execute rollback drill for RC flow and store artifact in `artifacts/reports/rollback-drill-report.json`
+- [X] T067 [P] Add architecture and lane isolation documentation in `docs/architecture/command-lane.md`
+- [X] T068 [P] Add dependency audit operations guide in `docs/operations/dependency-audit.md`
+- [X] T069 Add merge-gate operations guide in `docs/operations/merge-gates.md`
+- [X] T070 Run full readiness validation and record RC report in `artifacts/reports/release-candidate-validation.md`
 
 ---
 
