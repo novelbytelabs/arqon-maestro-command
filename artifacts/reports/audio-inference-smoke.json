@@ -1,7 +1,7 @@
 {
   "model_path": "artifacts/models/parakeet-tdt_ctc-1.1b/parakeet-tdt_ctc-1.1b.nemo",
   "input_wav": "artifacts/reports/smoke_input.wav",
-  "elapsed_ms": 1073,
+  "elapsed_ms": 951,
   "max_smoke_latency_ms": 10000,
   "transcript": "",
   "execution_authority": "refused",
@@ -10,7 +10,7 @@
     "audio_hash": "sha256:cb9568ee93b04dba4a309580b45a0369e486682e2e57305ac8f302630bb8e2ea",
     "lane": "command_lane",
     "policy_outcome": "refused",
-    "latency_ms": 1073,
-    "timestamp": "2026-03-31T00:30:36Z"
+    "latency_ms": 951,
+    "timestamp": "2026-03-31T01:17:08Z"
   }
 }

@@ -2,7 +2,7 @@
 
 **Feature Branch**: `001-develop-arqon-maestro`  
 **Created**: 2026-03-30  
-**Status**: Draft  
+**Status**: Ready for verification  
 **Input**: User description: "Develop the Arqon Maestro Command Lane, a control-first speech system for deterministic, operator-safe execution of voice commands within the Arqon Maestro Voice Operating System. The system must prioritize deterministic accept/reject behavior, grammar authority, a bounded command language, and fail-closed safety. It needs to distinguish from a Dictation Lane, optimize for low-latency command acceptance, and integrate with a Rust hot-path orchestrator for audio processing, policy adjudication, and interrupt authority. Define the canonical interaction lanes and ensure compliance with command and evidence packet contracts."
 
 ## Clarifications
@@ -173,8 +173,9 @@ implementation readiness gate via `make helios-smoke`.
   runtime, warmed model state, one concurrent lane session, validated command
   corpus of at least 1,000 utterances, and median utterance duration of 1-4
   seconds.
-- **FR-012**: System MUST reject infrastructure-level JSON payloads on internal
-  machine paths and use protobuf as the authoritative infrastructure wire format.
+- **FR-012**: System MUST use protobuf as the authoritative infrastructure wire
+  format on internal machine paths and MUST reject infrastructure-level JSON
+  payloads with typed refusal reasons.
 - **FR-013**: Before implementation starts, repository MUST produce
   `artifacts/reports/dependency-audit.md` with dependency status by test level
   (unit/integration/e2e/regression/adversarial), and each dependency MUST be
@@ -190,21 +191,26 @@ implementation readiness gate via `make helios-smoke`.
 - **FR-019**: Runtime work MUST execute in frozen `helios-gpu-118` with no direct
   in-environment installs.
 - **FR-020**: Dependency resolution/provisioning MUST occur only in approved
-  provisioning environments with auditable records.
+  provisioning environments with auditable records, including
+  `artifacts/reports/provisioning-environment-audit.md` (environment identity,
+  approval reference, operator, timestamp) and
+  `artifacts/reports/provisioning-change-log.md` (dependency change entries with
+  source and outcome).
 - **FR-021**: Command-lane service availability MUST meet or exceed 99.9% monthly.
 - **FR-022**: Adapter timeout handling MUST fail closed at 150ms or less for
   command-lane decisions.
 - **FR-023**: High-impact command false-positive rate MUST be less than or equal
   to 0.1% on the validated adversarial and regression evaluation suites as a
-  command safety policy threshold.
+  command safety policy threshold (policy target; enforcement defined by FR-029).
 - **FR-024**: High-impact confirmation prompts MUST auto-refuse if explicit
   confirmation is not received within 5 seconds.
 - **FR-025**: Implementation MUST NOT start while any dependency remains marked
   `deferred` in `artifacts/reports/dependency-audit.md`.
 - **FR-026**: CI and pre-merge validation MUST run runtime hygiene enforcement to
   block direct package installs in frozen `helios-gpu-118`.
-- **FR-027**: Internal machine-path interfaces MUST accept protobuf payloads only
-  and MUST explicitly reject JSON payloads with typed refusal reasons.
+- **FR-027**: Internal machine-path interfaces MUST enforce and emit auditable
+  typed refusal responses for any non-protobuf payload; this operationalizes
+  FR-012 at runtime and in validation outputs.
 - **FR-028**: Release operations MUST include documented canary and rollback
   procedures, and each release candidate MUST record rollback drill evidence.
 - **FR-029**: CI MUST compute and enforce the high-impact false-positive threshold
@@ -250,7 +256,9 @@ implementation readiness gate via `make helios-smoke`.
 - **SC-007**: 0 unresolved dependency gaps remain in
   `artifacts/reports/dependency-audit.md` before implementation starts.
 - **SC-008**: A new AI/dev instance can reproduce the local readiness runbook
-  (including `make helios-smoke`) without additional in-env installs.
+  (including `make helios-smoke`) without additional in-env installs, and the
+  run MUST produce `artifacts/reports/readiness-reproducibility.md` capturing
+  executed commands, runtime identity, and PASS/FAIL outcomes.
 - **SC-009**: Command-lane monthly availability is at least 99.9% over the
   measured reporting window.
 - **SC-010**: 100% of adapter timeout cases at or beyond 150ms result in explicit
@@ -259,7 +267,6 @@ implementation readiness gate via `make helios-smoke`.
   0.1% on the approved validation corpus.
 - **SC-012**: 100% of unconfirmed high-impact prompts are auto-refused after
   5 seconds and emit evidence with timeout rationale.
-- **SC-013**: 0 dependencies are marked `deferred` at implementation start.
 - **SC-014**: 100% of CI and pre-merge runs execute runtime hygiene checks with
   zero direct-install violations in frozen runtime contexts.
 - **SC-015**: 100% of internal machine-path JSON payload attempts are rejected

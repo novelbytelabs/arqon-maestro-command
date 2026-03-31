@@ -161,6 +161,9 @@
 - [X] T068 [P] Add dependency audit operations guide in `docs/operations/dependency-audit.md`
 - [X] T069 Add merge-gate operations guide in `docs/operations/merge-gates.md`
 - [X] T070 Run full readiness validation and record RC report in `artifacts/reports/release-candidate-validation.md`
+- [X] T071 [P] Produce provisioning environment audit artifact in `artifacts/reports/provisioning-environment-audit.md`
+- [X] T072 [P] Produce provisioning change log artifact in `artifacts/reports/provisioning-change-log.md`
+- [X] T073 Run fresh-instance readiness replay and record reproducibility evidence in `artifacts/reports/readiness-reproducibility.md`
 
 ---
 
@@ -225,6 +228,15 @@ T042, T043
 T047, T048, T049, T050
 # Parallel contract builders
 T051, T052, T053
+```
+
+### Polish & Cross-Cutting
+
+```bash
+# Parallel evidence artifacts
+T071, T072
+# Sequential reproducibility validation
+T073
 ```
 
 ---
