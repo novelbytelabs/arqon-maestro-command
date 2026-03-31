@@ -12,3 +12,29 @@ artifacts/models/**/model*.safetensors
 # Python cache
 __pycache__/
 *.pyc
+
+# Python virtual env / build artifacts
+.venv/
+venv/
+dist/
+*.egg-info/
+
+# Rust build artifacts
+target/
+debug/
+release/
+*.rlib
+*.prof*
+
+# Common editor and OS noise
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+.idea/
+.vscode/
+
+# Logs and local env files
+*.log
+.env
+.env.*

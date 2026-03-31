@@ -1,0 +1,3 @@
+adapter_timeout_ms: 150
+confirmation_timeout_s: 5
+fail_closed: true

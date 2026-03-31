@@ -11,15 +11,15 @@
 
 **Purpose**: Establish project scaffolding and baseline structure used by all stories.
 
-- [ ] T001 Create command-lane package scaffold in `src/command_lane/__init__.py`
-- [ ] T002 [P] Create command-lane API package scaffold in `src/command_lane/api/__init__.py`
-- [ ] T003 [P] Create policy configuration scaffold in `configs/lane_policy.yaml`
-- [ ] T004 [P] Create SLO configuration scaffold in `configs/slo_targets.yaml`
-- [ ] T005 [P] Create unit test package scaffold in `tests/unit/__init__.py`
-- [ ] T006 [P] Create integration test package scaffold in `tests/integration/__init__.py`
-- [ ] T007 [P] Create e2e test package scaffold in `tests/e2e/__init__.py`
-- [ ] T008 [P] Create regression test package scaffold in `tests/regression/__init__.py`
-- [ ] T009 [P] Create adversarial test package scaffold in `tests/adversarial/__init__.py`
+- [X] T001 Create command-lane package scaffold in `src/command_lane/__init__.py`
+- [X] T002 [P] Create command-lane API package scaffold in `src/command_lane/api/__init__.py`
+- [X] T003 [P] Create policy configuration scaffold in `configs/lane_policy.yaml`
+- [X] T004 [P] Create SLO configuration scaffold in `configs/slo_targets.yaml`
+- [X] T005 [P] Create unit test package scaffold in `tests/unit/__init__.py`
+- [X] T006 [P] Create integration test package scaffold in `tests/integration/__init__.py`
+- [X] T007 [P] Create e2e test package scaffold in `tests/e2e/__init__.py`
+- [X] T008 [P] Create regression test package scaffold in `tests/regression/__init__.py`
+- [X] T009 [P] Create adversarial test package scaffold in `tests/adversarial/__init__.py`
 
 ---
 
@@ -27,15 +27,15 @@
 
 **Purpose**: Build shared readiness, contracts, and validation gates before story work.
 
-- [ ] T010 Implement dependency audit generator CLI in `scripts/dependency_audit.py`
-- [ ] T011 Implement dependency audit markdown renderer in `scripts/dependency_audit_report.py`
-- [ ] T012 Implement deferred-dependency hard-block validator in `scripts/validate_dependency_audit.py`
-- [ ] T013 [P] Implement canonical lane and terminal decision types in `src/command_lane/types.py`
-- [ ] T014 [P] Implement protobuf contract loader and guards in `src/command_lane/contracts.py`
-- [ ] T015 [P] Implement shared fail-closed error types in `src/command_lane/errors.py`
-- [ ] T016 Implement command-lane service pipeline shell in `src/command_lane/service.py`
-- [ ] T017 [P] Add test-suite and contract gate targets in `Makefile`
-- [ ] T018 [P] Wire baseline CI checks for smoke/dependency/tests in `.github/workflows/ci.yml`
+- [X] T010 Implement dependency audit generator CLI in `scripts/dependency_audit.py`
+- [X] T011 Implement dependency audit markdown renderer in `scripts/dependency_audit_report.py`
+- [X] T012 Implement deferred-dependency hard-block validator in `scripts/validate_dependency_audit.py`
+- [X] T013 [P] Implement canonical lane and terminal decision types in `src/command_lane/types.py`
+- [X] T014 [P] Implement protobuf contract loader and guards in `src/command_lane/contracts.py`
+- [X] T015 [P] Implement shared fail-closed error types in `src/command_lane/errors.py`
+- [X] T016 Implement command-lane service pipeline shell in `src/command_lane/service.py`
+- [X] T017 [P] Add test-suite and contract gate targets in `Makefile`
+- [X] T018 [P] Wire baseline CI checks for smoke/dependency/tests in `.github/workflows/ci.yml`
 
 **Checkpoint**: Foundation complete; user story phases can proceed.
 
@@ -49,19 +49,19 @@
 
 ### Tests for User Story 1
 
-- [ ] T019 [P] [US1] Add grammar gate unit tests in `tests/unit/test_command_grammar_gate.py`
-- [ ] T020 [P] [US1] Add fail-closed policy unit tests in `tests/unit/test_policy_fail_closed.py`
-- [ ] T021 [P] [US1] Add command decision integration tests in `tests/integration/test_command_decision_flow.py`
-- [ ] T022 [P] [US1] Add deterministic terminal outcome e2e tests in `tests/e2e/test_command_terminal_outcomes.py`
-- [ ] T023 [P] [US1] Add out-of-grammar adversarial refusal tests in `tests/adversarial/test_out_of_grammar_refusal.py`
+- [X] T019 [P] [US1] Add grammar gate unit tests in `tests/unit/test_command_grammar_gate.py`
+- [X] T020 [P] [US1] Add fail-closed policy unit tests in `tests/unit/test_policy_fail_closed.py`
+- [X] T021 [P] [US1] Add command decision integration tests in `tests/integration/test_command_decision_flow.py`
+- [X] T022 [P] [US1] Add deterministic terminal outcome e2e tests in `tests/e2e/test_command_terminal_outcomes.py`
+- [X] T023 [P] [US1] Add out-of-grammar adversarial refusal tests in `tests/adversarial/test_out_of_grammar_refusal.py`
 
 ### Implementation for User Story 1
 
-- [ ] T024 [P] [US1] Implement bounded grammar gate in `src/command_lane/grammar_gate.py`
-- [ ] T025 [P] [US1] Implement policy adjudication gate in `src/command_lane/policy_gate.py`
-- [ ] T026 [US1] Implement terminal authority resolver in `src/command_lane/decision_engine.py`
-- [ ] T027 [US1] Implement `/v1/commands/evaluate` handler in `src/command_lane/api/commands.py`
-- [ ] T028 [US1] Implement refusal rationale logging in `src/command_lane/decision_logging.py`
+- [X] T024 [P] [US1] Implement bounded grammar gate in `src/command_lane/grammar_gate.py`
+- [X] T025 [P] [US1] Implement policy adjudication gate in `src/command_lane/policy_gate.py`
+- [X] T026 [US1] Implement terminal authority resolver in `src/command_lane/decision_engine.py`
+- [X] T027 [US1] Implement `/v1/commands/evaluate` handler in `src/command_lane/api/commands.py`
+- [X] T028 [US1] Implement refusal rationale logging in `src/command_lane/decision_logging.py`
 
 **Checkpoint**: US1 is independently testable and MVP-ready.
 
