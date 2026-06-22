@@ -1,6 +1,7 @@
 # Merge Gates Operations Guide
 
 Required gates before merge:
+
 - Runtime hygiene gate
 - Protocol sovereignty checks
 - Evidence schema validation

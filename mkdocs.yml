@@ -1,4 +1,4 @@
-site_name: Arqon Maestro Docs
+site_name: arqon-maestro-command  Docs
 site_description: Voice-first control layer documentation for the Arqon ecosystem
 site_url: https://novelbytelabs.github.io/arqon-maestro-command/
 repo_url: https://github.com/novelbytelabs/arqon-maestro-command/
@@ -10,13 +10,12 @@ dev_addr: 127.0.0.1:8193
 
 theme:
   name: "material"
-  custom_dir: overrides
   logo: assets/favicon.ico
   favicon: assets/favicon.ico
   features:
     #    - navigation.tabs
     - navigation.sections
-#    - navigation.expand
+    - navigation.expand
     - navigation.tracking
     - toc.follow
     - content.tabs.link
@@ -42,6 +41,14 @@ theme:
   icon:
     repo: fontawesome/brands/github
 
-
 nav:
   - Overview: index.md
+  - Model Card: model-card-command-lane.md
+  - Architecture:
+    - Command Lane: architecture/command-lane.md
+    - Maestro Bridge: architecture/maestro-bridge.md
+  - Operations:
+    - Canary Rollout: operations/canary-rollout.md
+    - Dependency Audit: operations/dependency-audit.md
+    - Merge Gates: operations/merge-gates.md
+    - Model Start and Usage: operations/model-start-and-usage.md

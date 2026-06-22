@@ -1,5 +1,0 @@
-{
-  "scenario": "rc-flow",
-  "rollback_success": true,
-  "recovery_time_seconds": 45
-}

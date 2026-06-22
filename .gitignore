@@ -1,40 +1,101 @@
-# Codex
-.codex/
+# ArqonMaestro Git Ignore
 
-# Environment variables (may contain secrets)
-.envrc
+# Tools and Dependencies
+.tools/
+.vscode/
+env.sh
 
-# Large model artifacts (do not commit)
-artifacts/models/**/*.nemo
-artifacts/models/**/pytorch_model*.bin
-artifacts/models/**/model*.safetensors
+# Java / Gradle
+.gradle/
+build/
+bin/
+out/
+gen/
+*.class
+*.jar
+*.war
+*.ear
 
-# Python cache
-__pycache__/
-*.pyc
-
-# Python virtual env / build artifacts
-.venv/
-venv/
+# Node / JS
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnp*
+.vscode-test/
 dist/
-*.egg-info/
+vscode-plugin/package-lock.json
+vscode-plugin/yarn.lock
 
-# Rust build artifacts
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+*.log
+site/
+
+# C++ / Rust
 target/
-debug/
-release/
-*.rlib
-*.prof*
+*.o
+*.a
+*.so
+*.out
 
-# Common editor and OS noise
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
 .DS_Store
 Thumbs.db
-*.tmp
-*.swp
-.idea/
-.vscode/
 
-# Logs and local env files
-*.log
-.env
-.env.*
+# Multimedia and Archives
+*.wav
+*.mp3
+*.tar.gz
+*.tar.xz
+*.zip
+*.vsix
+*.raw
+
+# Maestro Engine Subtree
+maestro/client/static/local
+maestro/core/lib
+maestro/core/src/dist/lib
+maestro/core/src/main/antlr/.antlr
+maestro/core/src/main/antlr/CommandLexer.g4
+maestro/core/src/main/antlr/CommandParser.g4
+maestro/core/src/main/java/core/util/ObjectType.java
+maestro/core/src/main/java/core/util/ObjectTypeConverter.java
+maestro/core/src/main/resources/CommandLexer.g4
+maestro/core/src/main/resources/CommandParser.g4
+maestro/core/src/main/resources/lexicons
+maestro/core/src/main/resources/grammars
+
+# External Dependencies and Runtime Assets
+maestro/models/
+maestro/tree-sitter/*
+!maestro/tree-sitter/java-tree-sitter/
+!maestro/tree-sitter/java-tree-sitter/**
+maestro/tree-sitter/java-tree-sitter/build/
+maestro/tree-sitter/java-tree-sitter/bin/
+maestro/tree-sitter/java-tree-sitter/libjava-tree-sitter.so
+maestro/tree-sitter/java-tree-sitter/tree-sitter/libtree-sitter.a
+maestro/tree-sitter/java-tree-sitter/tree-sitter/libtree-sitter.so
+maestro/tree-sitter/java-tree-sitter/tree-sitter/libtree-sitter.so.*
+
+# Exceptions
+!maestro/client/build/*
+!maestro/core/src/main/java/core/gen/antlr/antlr4/LexerAdaptor.java
+!maestro/core/src/dist/bin/run-pro
+
+# Local audit bundles generated during PM freeze/report workflows
+maestro_integrity_layer_*/
+maestro_pm_reset_bundle_*/
+.codebuddy
